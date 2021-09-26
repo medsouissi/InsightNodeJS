@@ -125,7 +125,7 @@
  <!-- sidebar area end -->
 
  <main>
-
+   <%- include('includes/flash.ejs') %>
     <!-- bg shape area start -->
     <div class="bg-shape">
        <img src="assets/img/shape/shape-1.png" alt="">
@@ -161,18 +161,18 @@
                       </div>
                    </div>
                    <div class="sign__form">
-                      <form action="#">
+                      <form action="login" method="POST">
                          <div class="sign__input-wrapper mb-25">
                             <h5>Work email</h5>
                             <div class="sign__input">
-                               <input type="text" placeholder="e-mail address">
+                               <input type="email" placeholder="e-mail address" name="email">
                                <i class="fal fa-envelope"></i>
                             </div>
                          </div>
                          <div class="sign__input-wrapper mb-10">
                             <h5>Password</h5>
                             <div class="sign__input">
-                               <input type="text" placeholder="Password">
+                               <input type="password" placeholder="Password" name="password">
                                <i class="fal fa-lock"></i>
                             </div>
                          </div>

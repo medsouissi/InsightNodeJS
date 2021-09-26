@@ -21,11 +21,11 @@ router.post('/',
     next()
   }).catch((regErrors) => {
     regErrors.forEach(function (error) {
-     // req.flash('regErrors', error)
+     req.flash("errors", error)
     })
-    //req.session.save(function () {
-    //   res.redirect('/home')
-    // })
+    req.session.save(function () {
+      res.redirect('/signup')
+    })
     // test/
   })
 

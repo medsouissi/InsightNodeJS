@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer')
 const Mailgen = require('mailgen');
 const mailgun = require("mailgun-js")
 const encrypt = require('crypto').encrypt
-const ObjectID = require('mysql2').ObjectID
+const ObjectID = require('mysql2')
 const dotenv = require('dotenv')
 dotenv.config()
 
@@ -27,7 +27,7 @@ let Mail = function (req, res, operation) {
             name: 'Mohamed SOUISSI from INSIGHT MARKETPLACE',
             link: 'https://github.com/ridha-bouazizi'
             // Optional product logo
-            // logo: 'https://mailgen.js/img/logo.png'
+            // logo: 'https://mailgen.js/img/logo 2.png'
         }
     });
 
@@ -44,7 +44,7 @@ let Mail = function (req, res, operation) {
 
 Mail.prototype.prepareEmail = function (username, id, operation) {
     if (operation === "confirmation") {
-        id = encrypt(new ObjectID(id).toString())
+        // id = encrypt(new ObjectID(id).toString())
         return {
             body: {
                 name: username,
@@ -54,7 +54,7 @@ Mail.prototype.prepareEmail = function (username, id, operation) {
                     button: {
                         color: '#22BC66', // Optional action button color
                         text: 'Confirm your account',
-                        link: process.env.APP_DOMAIN.concat('confirm/', id.iv, '/', id.content)
+                        link: process.env.APP_DOMAIN.concat('confirm/', id, '/')
                     }
                 },
                 outro: 'Need help, or have questions? Just reply to this email, we\'d love to help.'

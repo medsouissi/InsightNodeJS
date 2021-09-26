@@ -125,7 +125,7 @@
 <!-- sidebar area end -->
 
 <main>
-
+   <%- include('includes/flash.ejs') %>
    <!-- bg shape area start -->
    <div class="bg-shape">
       <img src="assets/img/shape/shape-1.png" alt="">
@@ -167,14 +167,14 @@
                         <div class="sign__input-wrapper mb-25">
                            <h5>First Name</h5>
                            <div class="sign__input">
-                              <input type="text" placeholder="First name" name="firstname">
+                              <input type="text" placeholder="First name" name="prenom">
                               <i class="fal fa-user"></i>
                            </div>
                         </div>
                         <div class="sign__input-wrapper mb-25">
                            <h5>Last Name</h5>
                            <div class="sign__input">
-                              <input type="text" placeholder="Last name" name="lastname">
+                              <input type="text" placeholder="Last name" name="nom">
                               <i class="fal fa-user"></i>
                            </div>
                         </div>
@@ -182,6 +182,27 @@
                            <h5>Email</h5>
                            <div class="sign__input">
                               <input type="email" placeholder="e-mail address" name="email">
+                              <i class="fal fa-envelope"></i>
+                           </div>
+                        </div>
+                        <div class="sign__input-wrapper mb-25">
+                           <h5>Cin</h5>
+                           <div class="sign__input">
+                              <input type="text" placeholder="CIN" name="cin">
+                              <i class="fal fa-envelope"></i>
+                           </div>
+                        </div>
+                        <div class="sign__input-wrapper mb-25">
+                           <h5>Address</h5>
+                           <div class="sign__input">
+                              <input type="text" placeholder="Address" name="addresse">
+                              <i class="fal fa-envelope"></i>
+                           </div>
+                        </div>
+                        <div class="sign__input-wrapper mb-25">
+                           <h5>Phone number</h5>
+                           <div class="sign__input">
+                              <input type="text" placeholder="Phone number" name="telephone">
                               <i class="fal fa-envelope"></i>
                            </div>
                         </div>
@@ -201,7 +222,7 @@
                         </div>
                         <div class="sign__action d-flex justify-content-between mb-30">
                            <div class="sign__agree d-flex align-items-center">
-                              <input class="m-check-input" type="checkbox" id="m-agree">
+                              <input class="m-check-input" type="checkbox" id="m-agree" name="agreetoterms">
                               <label class="m-check-label" for="m-agree">I agree to the <a href="#">Terms & Conditions</a>
                                  </label>
                            </div>
