@@ -93,9 +93,12 @@ User.prototype.register = function (req) {
                 prenom: this.data.prenom,
                 email: this.data.email,
                 password: this.data.password,
+                cin:this.data.cin,
+                telephone:this.data.telephone,
+                addresse:this.data.addresse
 
             }
-            await db.query(`INSERT INTO user(nom,prenom,email,cin,addresse,telephone password)VALUES('${this.data.nom}','${this.data.prenom}','${this.data.email}','${this.data.cin}','${this.data.addresse}','${this.data.telephone}','${this.data.password}')`)
+            await db.query(`INSERT INTO user(nom,prenom,email,cin,addresse,telephone,password)VALUES('${this.data.nom}','${this.data.prenom}','${this.data.email}','${this.data.cin}','${this.data.addresse}','${this.data.telephone}','${this.data.password}') `)
 
             resolve('congrats!')
         } else {
