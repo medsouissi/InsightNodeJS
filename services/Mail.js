@@ -24,7 +24,7 @@ let Mail = function (req, res, operation) {
     this.mailGenerator = new Mailgen({
         theme: 'default',
         product: {
-            name: 'Mohamed SOUISSI from INSIGHT MARKETPLACE',
+            name: 'Mohamed SOUISSI from db_insight MARKETPLACE',
             link: 'https://github.com/ridha-bouazizi'
             // Optional product logo
             // logo: 'https://mailgen.js/img/logo 2.png'

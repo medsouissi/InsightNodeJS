@@ -10,6 +10,9 @@ var homeRouter = require('./routes/home');
 var loginRouter = require('./routes/login')
 var signupRouter = require('./routes/signup')
 var signoutRouter = require('./routes/signout')
+var productsRouter = require('./routes/product');
+var productDetailsRouter = require('./routes/productDetails');
+var profileRouter = require('./routes/profile');
 var app = express();
 
 app.use(logger('dev'));
@@ -17,6 +20,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// app.use(express.static('public'))
 app.use(flash())
 
 const session = require('express-session')
@@ -30,7 +35,7 @@ const options = {                 // setting connection options
   host: 'localhost',
   user: 'root',
   password: 'root',
-  database: 'insight',
+  database: 'db_insight',
 };
 
 
@@ -79,4 +84,7 @@ app.use('/home', homeRouter);
 app.use('/login', loginRouter);
 app.use('/signup', signupRouter);
 app.use('/signout', signoutRouter);
+app.use('/products', productsRouter);
+app.use('/productDetails', productDetailsRouter);
+app.use('/profile', profileRouter);
 module.exports = app;

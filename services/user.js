@@ -66,7 +66,7 @@ User.prototype.validate = async function () {
 
     //OnlyIf email is valid then check to see if it's already taken
     if (validator.isEmail(this.data.email)) {
-        let emailExists = await db.query(`SELECT * FROM user WHERE email = '${this.data.email}' `)
+        let emailExists = await db.query(`SELECT * FROM client WHERE email = '${this.data.email}' `)
         if (emailExists.length > 0) {
             this.errors.push("That email address is already being used.")
         }
@@ -98,7 +98,7 @@ User.prototype.register = function (req) {
                 addresse:this.data.addresse
 
             }
-            await db.query(`INSERT INTO user(nom,prenom,email,cin,addresse,telephone,password)VALUES('${this.data.nom}','${this.data.prenom}','${this.data.email}','${this.data.cin}','${this.data.addresse}','${this.data.telephone}','${this.data.password}') `)
+            await db.query(`INSERT INTO client(nom,prenom,email,cin,addresse,telephone,password)VALUES('${this.data.nom}','${this.data.prenom}','${this.data.email}','${this.data.cin}','${this.data.addresse}','${this.data.telephone}','${this.data.password}') `)
 
             resolve('congrats!')
         } else {
@@ -107,37 +107,39 @@ User.prototype.register = function (req) {
     })
 }
 
-// User.findByEmail = function (email) {
-//     return new Promise(async function (resolve, reject) {
-//         try {
-//             if (typeof (email) != "string") {
-               
-//                 return
-//             }
-//             let results = await db.query(`SELECT * FROM user WHERE email = '${email}' `)
+User.prototype.findByEmail = function (email) {
+    return new Promise(async function (resolve, reject) {
+        try {
+            if (typeof (email) != "string") {
+                reject("please try again later")
+                return
+            }
+            let results = await db.query(`SELECT * FROM client WHERE email = '${email}' `)
 
-//             if (results.length !== 1) {
-//                 this.errors.push("That email address is already being used.")
-//             } else {
-//                 return results[0];
-//             }
-//         } catch {
-//             reject("please try again later")
+            if (results.length !== 1) {
+                this.errors.push("That email address is already being used.")
+                reject("That email address is already being used.")
+            } else {
+                return results[0];
+                resolve("email found")
+            }
+        } catch {
+            reject("please try again later")
 
-//         }
-//     })
-// }
+        }
+    })
+}
 
-// User.prototype.confirmEmail = function (email) {
-//     return new Promise(async (resolve, reject) => {
-//         try {
-//             let userByEmail = await findByEmail(email)
-//             resolve("success")
-//         } catch {
-//             reject("failure")
-//         }
-//     })
-// }
+User.prototype.confirmEmail = function (email) {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let userByEmail = await findByEmail(email)
+            resolve("success")
+        } catch {
+            reject("failure")
+        }
+    })
+}
 
 // User.prototype.login = function () {
 
@@ -148,7 +150,7 @@ User.prototype.login = function (req) {
         // await this.cleanUp()
         try {
 
-            let results = await db.query(`SELECT * FROM user WHERE email = '${this.data.email}' `)
+            let results = await db.query(`SELECT * FROM client WHERE email = '${this.data.email}' `)
 
             if (results.length == 1){
                 attemptedUser = results[0]

@@ -18,15 +18,19 @@ app.set('port', port);
 /**
  * config ejs views.
  */
-
+//  const path = require("path")
  const express = require("express");
  app.use(express.urlencoded({ extended: false }))
  app.use(express.json())
- app.use(express.static('public'))
  app.set('views', 'views')
  app.set('view engine', 'ejs')
 
+//  app.use(express.static(__dirname + '/public'));
 
+ // Mount the middleware at "/static" to serve static content only when their request path is prefixed with "/static".
+ 
+     // GET /static/style.css etc.
+    //  app.use('/static', express.static(__dirname + '/public'));
 
  /**
  * Create HTTP server.

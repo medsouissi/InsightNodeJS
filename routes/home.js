@@ -2,6 +2,7 @@
 var express = require('express');
 var router = express.Router();
 var produits = require('../services/produits');
+var categories = require('../services/categories');
 
 /* GET home page. */
 router.get('/',async function (req, res, next) {
@@ -15,12 +16,13 @@ router.get('/',async function (req, res, next) {
         // fetch feed of posts for current user
         try {
           let allProduits = await produits.getAllProduits();
-          
-          res.render('home', { title: 'Express', Produits: allProduits });
+          let allCategories = await categories.getAllCategories();
+          res.render('home', { title: 'Express', Produits: allProduits, categories:allCategories });
         } catch (err) {
           console.error(`Error while getting quotes `, err.message);
           next(err);
         }
+        
     // }
 // } else {
 //     res.render('home', { regErrors: req.flash('regErrors') })
@@ -28,6 +30,13 @@ router.get('/',async function (req, res, next) {
   
 });
 
-
+router.get('/contact',async function (req, res, next) {
+        try {
+          res.render('contact');
+        } catch (err) {
+          console.error(`Error `, err.message);
+          next(err);
+        }
+});
 
 module.exports = router;

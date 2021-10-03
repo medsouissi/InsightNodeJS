@@ -5,7 +5,7 @@ const config = {
     host: env.DB_HOST || 'localhost',
     user: env.DB_USER || 'root',
     password: env.DB_PASSWORD || 'root',
-    database: env.DB_NAME || 'insight',
+    database: env.DB_NAME || 'db_insight',
     waitForConnections: true,
     connectionLimit: env.DB_CONN_LIMIT || 2,
     queueLimit: 0,
