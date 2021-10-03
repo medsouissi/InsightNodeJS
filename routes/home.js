@@ -16,6 +16,11 @@ router.get('/',async function (req, res, next) {
         // fetch feed of posts for current user
         try {
           let allProduits = await produits.getAllProduits();
+          for(var i=0;i<allProduits.jData.length;i++){
+            img = allProduits.jData[i].img_produit;
+            var imageURL = 'data:image/png;base64,'+ new Buffer(img, 'binary').toString('base64')
+            allProduits.jData[i].img_produit = imageURL
+          }
           let allCategories = await categories.getAllCategories();
           res.render('home', { title: 'Express', Produits: allProduits, categories:allCategories });
         } catch (err) {
