@@ -13,6 +13,7 @@ var signoutRouter = require('./routes/signout')
 var productsRouter = require('./routes/product');
 var productDetailsRouter = require('./routes/productDetails');
 var profileRouter = require('./routes/profile');
+var categoriesRouter =  require('./routes/category');
 var app = express();
 
 app.use(logger('dev'));
@@ -85,6 +86,7 @@ app.use('/login', loginRouter);
 app.use('/signup', signupRouter);
 app.use('/signout', signoutRouter);
 app.use('/products', productsRouter);
+app.use('/categories', categoriesRouter);
 app.use('/productDetails', productDetailsRouter);
 app.use('/profile', profileRouter);
 module.exports = app;
