@@ -11,8 +11,12 @@ router.get('/', async function (req, res, next) {
     var img;
     for(var i=0;i<allProduits.jData.length;i++){
       img = allProduits.jData[i].img_produit;
+      if ( img!== null){
       var imageURL = 'data:image/png;base64,'+ new Buffer(img, 'binary').toString('base64')
       allProduits.jData[i].img_produit = imageURL
+    }else {
+      allProduits.jData[i].img_produit='assets/img/product/product-1.jpg'
+    }
     }
     let allCategories = await categories.getAllCategories();
     res.render('products', { title: 'Express', Produits: allProduits, Categories: allCategories });
