@@ -1,107 +1,151 @@
 <%- include('includes/header') %>
 
-<main>
-   <%- include('includes/flash.ejs') %>
-   <!-- bg shape area start -->
-   <div class="bg-shape">
-      <img src="assets/img/shape/shape-1.png" alt="">
-   </div>
-   <!-- bg shape area end -->
+   <main>
+      <%- include('includes/flash.ejs') %>
+         <!-- bg shape area start -->
+         <div class="bg-shape">
+            <img src="assets/img/shape/shape-1.png" alt="">
+         </div>
+         <!-- bg shape area end -->
 
-   <!-- sign up area start -->
-   <section class="signup__area po-rel-z1 pt-100 pb-145">
-      <div class="sign__shape">
-         <img class="man-1" src="assets/img/icon/sign/man-3.png" alt="">
-         <img class="man-2 man-22" src="assets/img/icon/sign/man-2.png" alt="">
-         <img class="circle" src="assets/img/icon/sign/circle.png" alt="">
-         <img class="zigzag" src="assets/img/icon/sign/zigzag.png" alt="">
-         <img class="dot" src="assets/img/icon/sign/dot.png" alt="">
-         <img class="bg" src="assets/img/icon/sign/sign-up.png" alt="">
-         <img class="flower" src="assets/img/icon/sign/flower.png" alt="">
-      </div>
-      <div class="container">
-         
-         <div class="row">
-            <div class="col-xxl-6 offset-xxl-3 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
-               <div class="contact__wrapper  white-bg">
-                  <div class="contact__form">
-                     <form action="#">
-                        <div class="row">
-                           <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-                              <div class="contact__input-wrapper mb-25">
-                                 <h5>First Name</h5>
-                                 <div class="contact__input">
-                                    <input type="text" placeholder="First Name">
-                                    <i class="fal fa-user"></i>
+         <!-- sign up area start -->
+         <section class="signup__area po-rel-z1 pt-100 pb-145">
+            <div class="sign__shape">
+               <img class="man-1" src="assets/img/icon/sign/man-3.png" alt="">
+               <img class="man-2 man-22" src="assets/img/icon/sign/man-2.png" alt="">
+               <img class="circle" src="assets/img/icon/sign/circle.png" alt="">
+               <img class="zigzag" src="assets/img/icon/sign/zigzag.png" alt="">
+               <img class="dot" src="assets/img/icon/sign/dot.png" alt="">
+               <img class="bg" src="assets/img/icon/sign/sign-up.png" alt="">
+               <img class="flower" src="assets/img/icon/sign/flower.png" alt="">
+            </div>
+            <div class="container">
+
+               <div class="row">
+                  <div class="col-xxl-6 offset-xxl-3 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
+                     <div class="contact__wrapper  white-bg">
+                        <div class="contact__form">
+                           <form action="/profile" method="POST">
+                              <div class="row">
+                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+                                    <div class="contact__input-wrapper mb-25">
+                                       <h5>First Name</h5>
+                                       <div class="contact__input">
+                                          <input type="text" placeholder="First Name" value="<%=user.prenom%>"
+                                             name="prenom">
+                                          <i class="fal fa-user"></i>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+                                    <div class="contact__input-wrapper mb-25">
+                                       <h5>Last Name</h5>
+                                       <div class="contact__input">
+                                          <input type="text" placeholder="Last Name" value="<%=user.nom%>" name="nom">
+                                          <i class="fal fa-user"></i>
+                                       </div>
+                                    </div>
                                  </div>
                               </div>
-                           </div>
-                           <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-                              <div class="contact__input-wrapper mb-25">
-                                 <h5>Last Name</h5>
-                                 <div class="contact__input">
-                                    <input type="text" placeholder="Last Name">
-                                    <i class="fal fa-user"></i>
+                              <div class="row">
+                                 <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
+                                    <div class="contact__input-wrapper mb-25">
+                                       <h5>Email</h5>
+                                       <div class="contact__input">
+                                          <input type="text" placeholder="Email" value="<%=user.email%>" name="email">
+                                          <i class="fal fa-envelope"></i>
+                                       </div>
+                                    </div>
                                  </div>
                               </div>
-                           </div>
+                              <div class="row">
+                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+                                    <div class="contact__input-wrapper mb-25">
+                                       <h5>CIN</h5>
+                                       <div class="contact__input">
+                                          <input type="text" placeholder="CIN" value="<%=user.cin%>" name="cin">
+                                          <i class="fal fa-user"></i>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+                                    <div class="contact__input-wrapper mb-25">
+                                       <h5>Phone</h5>
+                                       <div class="contact__input">
+                                          <input type="text" placeholder="Phone" value="<%=user.telephone%>"
+                                             name="telephone" />
+                                          <i class="fal fa-phone"></i>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+                                    <div class="contact__input-wrapper mb-25">
+                                       <h5>Date de naissance</h5>
+                                       <div class="contact__input">
+                                          <input type="date" value="<%=user.date_de_naissance%>"
+                                             name="date_de_naissance" style="padding-right: 20px;padding-left: 20px;">
+
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+                                    <div class="contact__input-wrapper mb-25">
+                                       <h5>Sexe</h5>
+                                       <div class="contact__input">
+                                          <!-- <input type="radio" id="Mr." name="sex" value="Mr">
+                                            <label for="Mr">Mr</label>
+                                            <input type="radio" id="Mme" name="sex" value="Mme">
+                                            <label for="Mme">Mme</label> -->
+                                          <select name="sex" id="pet-select" class="contact__input"
+                                             style=" width: 100%; height: 60px;line-height: 56px;padding: 0 50px;font-size: 14px;background: #f6f6f7;color: #1a152e;-webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius: 6px;border: 2px solid #f6f6f7;">
+                                             <% if (user.sex !=='Mr' && user.sex !=='Mme' ){%>
+                                                <option value="--" selected>--</option>
+                                                <option value="Mr" >Mr</option>
+                                                <option value="Mme" >Mme</option>
+                                             <%}else if (user.sex === 'Mr' ){%>
+                                                <option value="--">--</option>
+                                                <option value="Mr" selected>Mr</option>
+                                                <option value="Mme" >Mme</option>
+                                             
+                                                <%}else{%>
+                                                   <option value="--">--</option>
+                                                   <option value="Mr" >Mr</option>
+                                                   <option value="Mme" selected>Mme</option>
+                                                
+                                                <%}%>
+                                          </select>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-xxl-12">
+                                    <div class="contact__input-wrapper mb-25">
+                                       <h5>Address</h5>
+                                       <div class="contact__input textarea">
+                                          <textarea placeholder="Address" 
+                                             name="addresse"> <%=user.addresse%></textarea>
+                                          <i class="fal fa-comment"></i>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-xxl-12">
+                                    <button type="submit" class="m-btn m-btn-4"> <span></span> Save </button>
+                                 </div>
+                              </div>
+                           </form>
                         </div>
-                        <div class="row">
-                           <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
-                              <div class="contact__input-wrapper mb-25">
-                                 <h5>Email</h5>
-                                 <div class="contact__input">
-                                    <input type="text" placeholder="Email">
-                                    <i class="fal fa-envelope"></i>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-                              <div class="contact__input-wrapper mb-25">
-                                 <h5>CIN</h5>
-                                 <div class="contact__input">
-                                    <input type="text" placeholder="CIN">
-                                    <i class="fal fa-user"></i>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-                              <div class="contact__input-wrapper mb-25">
-                                 <h5>Phone</h5>
-                                 <div class="contact__input">
-                                    <input type="text" placeholder="Phone">
-                                    <i class="fal fa-phone"></i>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-xxl-12">
-                              <div class="contact__input-wrapper mb-25">
-                                 <h5>Address</h5>
-                                 <div class="contact__input textarea">
-                                    <textarea placeholder="Address"></textarea>
-                                    <i class="fal fa-comment"></i>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-xxl-12">
-                              <button type="submit" class="m-btn m-btn-4"> <span></span> Save </button>
-                           </div>
-                        </div>
-                     </form>
+                     </div>
                   </div>
                </div>
             </div>
-         </div>
-      </div>
-   </section>
-   <!-- sign up area end -->
+         </section>
+         <!-- sign up area end -->
 
-</main>
+   </main>
 
- <%- include('includes/footer') %>
+   <%- include('includes/footer') %>

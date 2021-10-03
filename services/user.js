@@ -107,12 +107,44 @@ User.prototype.register = function (req) {
     })
 }
 
-User.prototype.findByEmail = function (email) {
-    return new Promise(async function (resolve, reject) {
+User.prototype.save = function (req) {
+    return new Promise(async (resolve, reject) => {
+        // step 1 validate user data
+
+        // await this.validate();
+        // // step 2 only if there are no validation errors,
+        // // save the user data into a database
+        // if (!this.errors.length) {
+            //hash user password
+           
+            //store the data
+            this.data.role = 3
+            this.data.dateAdded = new Date()
+            this.data = {
+                id_client: this.data.id_client,
+                nom: this.data.nom,
+                prenom: this.data.prenom,
+                email: this.data.email,
+                password: this.data.password,
+                cin:this.data.cin,
+                telephone:this.data.telephone,
+                addresse:this.data.addresse,
+                date_de_naissance : this.data.date_de_naissance,
+                sex : this.data.sex
+            }
+            await db.query(`UPDATE client SET nom = '${this.data.nom}', prenom = '${this.data.prenom}', cin = '${this.data.cin}', email = '${this.data.email}', addresse = '${this.data.addresse}', telephone = '${this.data.telephone}',  sex = '${this.data.sex}', date_de_naissance = '${this.data.date_de_naissance}' WHERE (email = '${this.data.email}') `)
+            
+
+           
+    })
+}
+
+User.prototype.findByEmail = async function (email) {
+    
         try {
             if (typeof (email) != "string") {
                 reject("please try again later")
-                return
+                
             }
             let results = await db.query(`SELECT * FROM client WHERE email = '${email}' `)
 
@@ -120,14 +152,18 @@ User.prototype.findByEmail = function (email) {
                 this.errors.push("That email address is already being used.")
                 reject("That email address is already being used.")
             } else {
-                return results[0];
-                resolve("email found")
+               
+              let  user = results[0];
+                let jData = JSON.parse(JSON.stringify(user));
+                return jData;
+                
             }
         } catch {
             reject("please try again later")
 
         }
-    })
+
+    
 }
 
 User.prototype.confirmEmail = function (email) {
