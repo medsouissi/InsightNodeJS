@@ -15,12 +15,14 @@ router.post('/',
  function (req, res, next) {
   let user = new User(req.body)
   user.data.id_client = req.session.user.id_client
-  user.save().then(() => {
+  try {
+  user.save()
     req.session.user = { email: user.data.email, _id: user.data._id }
     req.session.save()
-
-    next()
-  }).catch((regErrors) => {
+    
+    req.flash("success", "Saved Successfully")
+    res.redirect('/profile')
+  }catch(regErrors) {
     regErrors.forEach(function (error) {
      req.flash("errors", error)
     })
@@ -28,7 +30,7 @@ router.post('/',
       res.redirect('/profile')
     })
     // test/
-  })
+  }
 
  });
 
